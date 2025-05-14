@@ -40,7 +40,7 @@ public class UserService {
         return new UserResponse.DTO(userPS);
     }
 
-    public Map<String, Object> checkUsernameDuplicate(String username) {
+    public Map<String, Object> checkUsernameAvailable(String username) {
         Optional<User> userOP = userRepository.findByUsername(username);
         Map<String, Object> respDTO = new HashMap<>();
 

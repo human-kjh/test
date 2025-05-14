@@ -29,7 +29,7 @@ public class UserController {
 
     @GetMapping("/api/check-username-available/{username}")
     public ResponseEntity<?> checkUsernameAvailable(@PathVariable("username") String username) {
-        Map<String, Object> respDTO = userService.checkUsernameDuplicate(username);
+        Map<String, Object> respDTO = userService.checkUsernameAvailable(username);
         return Resp.ok(respDTO);
     }
 }
