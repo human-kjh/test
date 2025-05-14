@@ -57,6 +57,8 @@ public class UserControllerTest {
         // eye
         String responseBody = actions.andReturn().getResponse().getContentAsString();
         System.out.println(responseBody);
+
+        // TODO : then 필요
     }
 
 
