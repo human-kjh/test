@@ -54,7 +54,5 @@ public class ApplicationResponse {
             this.result = result;
         }
     }
-
-    // 111111111111111111
 }
 
