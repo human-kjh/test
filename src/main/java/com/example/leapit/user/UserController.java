@@ -1,7 +1,9 @@
 package com.example.leapit.user;
 
+import com.example.leapit._core.error.ex.ExceptionApi400;
 import com.example.leapit._core.util.Resp;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
