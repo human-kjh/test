@@ -1,6 +1,5 @@
 package com.example.leapit.application;
 
-import com.example.leapit.application.bookmark.ApplicationBookmarkResponse;
 import lombok.Data;
 
 import java.time.LocalDate;

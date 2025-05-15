@@ -1,9 +1,6 @@
 package com.example.leapit.application;
 
 import com.example.leapit._core.error.ex.ExceptionApi404;
-import com.example.leapit.application.bookmark.ApplicationBookmarkResponse;
-import com.example.leapit.jobposting.bookmark.JobPostingBookmarkRepository;
-import com.example.leapit.jobposting.bookmark.JobPostingBookmarkResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +10,6 @@ import java.util.List;
 @Service
 public class ApplicationService {
     private final ApplicationRepository applicationRepository;
-    private final JobPostingBookmarkRepository jobPostingBookmarkRepository;
 
     // 개인 마이페이지 지원 현황 관리
     public ApplicationResponse.ListViewDTO myPageApply(Integer userId) {

@@ -2,12 +2,10 @@ package com.example.leapit.application;
 
 import com.example.leapit.application.bookmark.ApplicationBookmark;
 import com.example.leapit.common.enums.PassStatus;
-import com.example.leapit.common.enums.Role;
 import com.example.leapit.common.enums.ViewStatus;
 import com.example.leapit.jobposting.JobPosting;
 import com.example.leapit.resume.Resume;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
