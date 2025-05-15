@@ -9,10 +9,10 @@ public class ApplicationResponse {
 
     // 지원 현황 목록 + 통계
     @Data
-    public static class ListViewDTO {
+    public static class MyPageDTO {
         private StatusDTO status;
         private List<ItemDTO> applications;
-        public ListViewDTO(StatusDTO status, List<ItemDTO> applications) {
+        public MyPageDTO(StatusDTO status, List<ItemDTO> applications) {
             this.status = status;
             this.applications = applications;
         }

@@ -12,7 +12,7 @@ public class ApplicationService {
     private final ApplicationRepository applicationRepository;
 
     // 개인 마이페이지 지원 현황 관리
-    public ApplicationResponse.ListViewDTO myPageApply(Integer userId) {
+    public ApplicationResponse.MyPageDTO getMyApplication(Integer userId) {
         if (userId == null) throw new ExceptionApi404("회원정보가 존재하지 않습니다.");
 
         // 지원 현황 통계
@@ -24,7 +24,7 @@ public class ApplicationService {
         // 지원 현황 목록 조회
         List<ApplicationResponse.ItemDTO> applicationDtos = applicationRepository.findApplicationsByUserId(userId);
         // respDTO에 담기
-        ApplicationResponse.ListViewDTO respDTO = new ApplicationResponse.ListViewDTO(statusDto, applicationDtos);
+        ApplicationResponse.MyPageDTO respDTO = new ApplicationResponse.MyPageDTO(statusDto, applicationDtos);
         return respDTO;
     }
 }
