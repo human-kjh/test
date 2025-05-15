@@ -1,9 +1,7 @@
 package com.example.leapit.application;
 
 import com.example.leapit._core.util.Resp;
-import com.example.leapit.jobposting.JobPosting;
 import com.example.leapit.user.User;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
