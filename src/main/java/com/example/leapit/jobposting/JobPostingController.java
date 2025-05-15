@@ -15,13 +15,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class JobPostingController {
     private final JobPostingService jobPostingService;
-
-    private final HttpSession session;
-
-    @PostMapping("/company/jobposting")
-    public ResponseEntity<?> save(@Valid @RequestBody JobPostingRequest.SaveDTO saveDTO, Errors errors) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
-        JobPostingRequest.SaveDTO reqDTO = jobPostingService.save(saveDTO, sessionUser);
-        return Resp.ok(reqDTO);
-    }
 }

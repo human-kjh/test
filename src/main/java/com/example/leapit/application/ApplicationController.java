@@ -20,7 +20,7 @@ public class ApplicationController {
     @GetMapping("/s/personal/mypage/application")
     public ResponseEntity<?> getMyApplication() {
         User sessionUser = (User) session.getAttribute("sessionUser");
-        ApplicationResponse.ListViewDTO respDTO = applicationService.getMyApplication(sessionUser.getId());
+        ApplicationResponse.MyPageDTO respDTO = applicationService.getMyApplication(sessionUser.getId());
         return Resp.ok(respDTO);
     }
 }
