@@ -1,6 +1,7 @@
 package com.example.leapit.application;
 
 import com.example.leapit._core.util.Resp;
+import com.example.leapit.jobposting.JobPosting;
 import com.example.leapit.user.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -21,5 +22,15 @@ public class ApplicationController {
         User sessionUser = (User) session.getAttribute("sessionUser");
         ApplicationResponse.ListViewDTO respDTO = applicationService.myPageApply(sessionUser.getId());
         return Resp.ok(respDTO);
+    }
+
+    // 개인 마이페이지 공고 스크랩 현황 관리
+    @GetMapping("/s/personal/mypage/bookmark")
+    public String personalBookmark(HttpServletRequest request) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        JobPostingResponse.BookmarkListDTO respDTO = applicationService.myBookmarkpage(sessionUser.getId());
+
+        request.setAttribute("models", respDTO);
+        return "personal/mypage/bookmark";
     }
 }

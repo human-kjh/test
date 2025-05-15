@@ -35,7 +35,8 @@ public class ApplicationResponse {
 
     // 지원 형황 목록
     @Data
-    public static class Dto {
+    public static class DTO {
+
         private String companyName;
         private String jobTitle;
         private LocalDate appliedDate;
@@ -43,7 +44,7 @@ public class ApplicationResponse {
         private Integer jobPostingId;
         private String result;
 
-        public Dto(String companyName, String jobTitle, LocalDate appliedDate,
+        public DTO(String companyName, String jobTitle, LocalDate appliedDate,
                               Integer resumeId, Integer jobPostingId, String result) {
             this.companyName = companyName;
             this.jobTitle = jobTitle;
