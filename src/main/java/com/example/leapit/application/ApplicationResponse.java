@@ -11,9 +11,9 @@ public class ApplicationResponse {
     // 지원 현황 목록 + 통계
     @Data
     public static class ListViewDTO {
-        private StatusDto status;
-        private List<Dto> applications;
-        public ListViewDTO(StatusDto status, List<Dto> applications) {
+        private StatusDTO status;
+        private List<ItemDTO> applications;
+        public ListViewDTO(StatusDTO status, List<ItemDTO> applications) {
             this.status = status;
             this.applications = applications;
         }
@@ -21,12 +21,12 @@ public class ApplicationResponse {
 
     // 지원 현황 통계
     @Data
-    public static class StatusDto {
+    public static class StatusDTO {
         private Long total;
         private Long passed;
         private Long failed;
 
-        public StatusDto(Long total, Long passed, Long failed) {
+        public StatusDTO(Long total, Long passed, Long failed) {
             this.total = total;
             this.passed = passed;
             this.failed = failed;
@@ -35,7 +35,7 @@ public class ApplicationResponse {
 
     // 지원 형황 목록
     @Data
-    public static class DTO {
+    public static class ItemDTO {
 
         private String companyName;
         private String jobTitle;
@@ -44,7 +44,7 @@ public class ApplicationResponse {
         private Integer jobPostingId;
         private String result;
 
-        public DTO(String companyName, String jobTitle, LocalDate appliedDate,
+        public ItemDTO(String companyName, String jobTitle, LocalDate appliedDate,
                               Integer resumeId, Integer jobPostingId, String result) {
             this.companyName = companyName;
             this.jobTitle = jobTitle;

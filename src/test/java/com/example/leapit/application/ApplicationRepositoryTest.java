@@ -1,6 +1,7 @@
 package com.example.leapit.application;
 
 import com.example.leapit.companyinfo.CompanyInfoRepository;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -35,13 +36,13 @@ public class ApplicationRepositoryTest {
         Integer userId = 1;
 
         // when
-        ApplicationResponse.StatusDto dto = applicationRepository.findSummaryByUserId(userId);
+        ApplicationResponse.StatusDTO dto = applicationRepository.findSummaryByUserId(userId);
 
         // eye
         System.out.println("=========통계 테스트=========");
         System.out.println("총 지원 수: " + dto.getTotal());
-        System.out.println("합격 수: " + dto.getTotal());
-        System.out.println("불합격 수: " + dto.getPassed());
+        System.out.println("합격 수: " + dto.getPassed());
+        System.out.println("불합격 수: " + dto.getFailed());
         System.out.println("=========== 끝 ===========");
     }
 
@@ -51,11 +52,11 @@ public class ApplicationRepositoryTest {
         Integer userId = 1;
 
         // when
-        List<ApplicationResponse.Dto> applications = applicationRepository.findApplicationsByUserId(userId);
+        List<ApplicationResponse.ItemDTO> applications = applicationRepository.findApplicationsByUserId(userId);
 
         // eye
         System.out.println("=========지원현황 테스트=========");
-        for (ApplicationResponse.Dto dto : applications) {
+        for (ApplicationResponse.ItemDTO dto : applications) {
             System.out.println("회사명: " + dto.getCompanyName());
             System.out.println("공고 제목: " + dto.getJobTitle());
             System.out.println("지원일: " + dto.getAppliedDate());

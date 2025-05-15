@@ -20,11 +20,11 @@ public class ApplicationRepository {
     }
 
     // 지원 현황 통계
-    public ApplicationResponse.StatusDto findSummaryByUserId(Integer userId) {
+    public ApplicationResponse.StatusDTO findSummaryByUserId(Integer userId) {
         String jpql = """
                     SELECT COUNT(a), 
-                           COUNT(CASE WHEN a.isPassed = true THEN 1 ELSE 0 END), 
-                           COUNT(CASE WHEN a.isPassed = false THEN 1 ELSE 0 END)
+                           SUM(CASE WHEN a.passStatus = 'PASS' THEN 1 ELSE 0 END), 
+                           SUM(CASE WHEN a.passStatus = 'FAIL' THEN 1 ELSE 0 END)
                     FROM Application a
                     JOIN a.resume r
                     JOIN r.user u
@@ -35,7 +35,7 @@ public class ApplicationRepository {
                 .setParameter("userId", userId)
                 .getSingleResult();
 
-        return new ApplicationResponse.StatusDto(
+        return new ApplicationResponse.StatusDTO(
                 (Long) result[0],
                 (Long) result[1],
                 (Long) result[2]
@@ -43,7 +43,7 @@ public class ApplicationRepository {
     }
 
     // 지원 현황 목록
-    public List<ApplicationResponse.Dto> findApplicationsByUserId(Integer userId) {
+    public List<ApplicationResponse.ItemDTO> findApplicationsByUserId(Integer userId) {
         String jpql = """
                     SELECT\s
                         ci.companyName,\s
@@ -51,11 +51,12 @@ public class ApplicationRepository {
                         a.appliedDate,\s
                         r.id AS resumeId,\s
                         jp.id AS jobPostingId,
-                    CASE WHEN a.isPassed = true\s
-                    THEN '합격'
-                    WHEN a.isPassed = false THEN '불합격'
-                    ELSE '미정'
-                    END AS result
+                        CASE\s
+                        WHEN a.passStatus = 'PASS' THEN '합격'
+                        WHEN a.passStatus = 'FAIL' THEN '불합격'
+                        WHEN a.passStatus = 'WAITING' AND a.viewStatus = 'UNVIEWED' THEN '미열람'
+                        WHEN a.passStatus = 'WAITING' AND a.viewStatus = 'VIEWED' THEN '미정'
+                        END AS result
                     FROM Application a
                     JOIN a.resume r
                     JOIN r.user u
@@ -72,7 +73,7 @@ public class ApplicationRepository {
                 .getResultList();
 
         return resultList.stream()
-                .map(row -> new ApplicationResponse.Dto(
+                .map(row -> new ApplicationResponse.ItemDTO(
                         (String) row[0],
                         (String) row[1],
                         (LocalDate) row[2],

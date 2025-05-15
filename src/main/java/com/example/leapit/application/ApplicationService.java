@@ -20,31 +20,15 @@ public class ApplicationService {
         if (userId == null) throw new ExceptionApi404("회원정보가 존재하지 않습니다.");
 
         // 지원 현황 통계
-        ApplicationResponse.StatusDto statusDto = applicationRepository.findSummaryByUserId(userId);
+        ApplicationResponse.StatusDTO statusDto = applicationRepository.findSummaryByUserId(userId);
         if (statusDto == null) {
-            statusDto = new ApplicationResponse.StatusDto(0L, 0L, 0L);
+            statusDto = new ApplicationResponse.StatusDTO(0L, 0L, 0L);
         }
 
         // 지원 현황 목록 조회
-        List<ApplicationResponse.Dto> applicationDtos = applicationRepository.findApplicationsByUserId(userId);
+        List<ApplicationResponse.ItemDTO> applicationDtos = applicationRepository.findApplicationsByUserId(userId);
         // respDTO에 담기
         ApplicationResponse.ListViewDTO respDTO = new ApplicationResponse.ListViewDTO(statusDto, applicationDtos);
-        return respDTO;
-    }
-
-    // 개인 마이페이지 공고 스크랩 현황 관리
-    public JobPostingBookmarkResponse.ListDTO myBookmarkpage(Integer userId) {
-        if (userId == null) throw new Exception404("회원정보가 존재하지 않습니다.");
-
-        // 지원 현황 통계
-        ApplicationResponse.ApplicationStatusDto statusDto = applicationRepository.findSummaryByUserId(userId);
-
-        // 스크랩한 공고 목록 조회
-        List<JobPostingBookmarkResponse.DTO> bookmarkListDTO = JobPostingBookmarkRepository.findAllJobPostingBookmarkByuserId(userId);
-
-        // respDTO에 담기
-        JobPostingBookmarkResponse.ListDTO respDTO = new JobPostingBookmarkResponse.ListDTO(bookmarkListDTO, statusDto);
-
         return respDTO;
     }
 }

@@ -23,14 +23,4 @@ public class ApplicationController {
         ApplicationResponse.ListViewDTO respDTO = applicationService.myPageApply(sessionUser.getId());
         return Resp.ok(respDTO);
     }
-
-    // 개인 마이페이지 공고 스크랩 현황 관리
-    @GetMapping("/s/personal/mypage/bookmark")
-    public String personalBookmark(HttpServletRequest request) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
-        JobPostingResponse.BookmarkListDTO respDTO = applicationService.myBookmarkpage(sessionUser.getId());
-
-        request.setAttribute("models", respDTO);
-        return "personal/mypage/bookmark";
-    }
 }
