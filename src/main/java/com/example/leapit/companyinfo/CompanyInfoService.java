@@ -142,3 +142,4 @@ public class CompanyInfoService {
         return new CompanyInfoResponse.DTO(companyInfoPS);
     }
 }
+

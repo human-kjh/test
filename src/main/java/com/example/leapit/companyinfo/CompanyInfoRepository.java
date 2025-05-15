@@ -2,6 +2,7 @@ package com.example.leapit.companyinfo;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -26,14 +27,8 @@ public class CompanyInfoRepository {
             return Optional.empty();
         }
     }
-
     public CompanyInfo save(CompanyInfo companyInfo) {
         em.persist(companyInfo);
         return companyInfo;
-    }
-
-    public Optional<CompanyInfo> findById(Integer id) {
-        CompanyInfo companyInfoPS = em.find(CompanyInfo.class, id);
-        return Optional.ofNullable(companyInfoPS);
     }
 }
