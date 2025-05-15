@@ -1,10 +1,5 @@
-package com.example.leapit.companyinforepository;
+package com.example.leapit.companyinfo;
 
-import com.example.leapit.companyinfo.CompanyInfo;
-import com.example.leapit.companyinfo.CompanyInfoRepository;
-import com.example.leapit.user.User;
-import com.example.leapit.user.UserRepository;
-import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -15,10 +10,6 @@ import java.util.Optional;
 @Import(CompanyInfoRepository.class)
 @DataJpaTest
 public class companyInfoRepositoryTest {
-    @Autowired
-    private EntityManager em;
-    @Autowired
-    private CompanyInfoRepository CIR;
     @Autowired
     private CompanyInfoRepository companyInfoRepository;
 
