@@ -17,7 +17,7 @@ public class ApplicationController {
 
     // 개인 마이페이지 지원 현황 관리
     @GetMapping("/s/personal/mypage/application")
-    public ResponseEntity<?> myPageApply(HttpServletRequest request) {
+    public ResponseEntity<?> myPageApply() {
         User sessionUser = (User) session.getAttribute("sessionUser");
         ApplicationResponse.ListViewDTO respDTO = applicationService.myPageApply(sessionUser.getId());
         return Resp.ok(respDTO);
