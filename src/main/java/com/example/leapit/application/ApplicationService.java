@@ -16,7 +16,6 @@ public class ApplicationService {
 
         // 지원 현황 통계
         ApplicationResponse.StatusDto statusDto = applicationRepository.findSummaryByUserId(userId);
-
         if (statusDto == null) {
             statusDto = new ApplicationResponse.StatusDto(0L, 0L, 0L);
         }

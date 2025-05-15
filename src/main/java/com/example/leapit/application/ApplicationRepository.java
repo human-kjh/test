@@ -55,13 +55,7 @@ public class ApplicationRepository {
                     THEN '합격'
                     WHEN a.isPassed = false THEN '불합격'
                     ELSE '미정'
-                    END AS result,
-                    CASE WHEN a.isPassed = true
-                    THEN 'bg-primary'
-                    WHEN a.isPassed = false
-                    THEN 'bg-danger'
-                    ELSE 'bg-secondary'
-                    END AS badgeClass
+                    END AS result
                     FROM Application a
                     JOIN a.resume r
                     JOIN r.user u
@@ -84,8 +78,7 @@ public class ApplicationRepository {
                         (LocalDate) row[2],
                         (Integer) row[3],
                         (Integer) row[4],
-                        (String) row[5],
-                        (String) row[6]
+                        (String) row[5]
                 ))
                 .toList();
     }
