@@ -4,16 +4,10 @@ import com.example.leapit._core.error.ex.ExceptionApi400;
 import com.example.leapit._core.error.ex.ExceptionApi403;
 import com.example.leapit._core.error.ex.ExceptionApi404;
 import com.example.leapit._core.util.Base64Util;
-import com.example.leapit.common.enums.Role;
 import com.example.leapit.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service

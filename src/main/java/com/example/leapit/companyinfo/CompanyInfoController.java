@@ -1,7 +1,6 @@
 package com.example.leapit.companyinfo;
 
 import com.example.leapit._core.util.Resp;
-import com.example.leapit.common.enums.Role;
 import com.example.leapit.user.User;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
