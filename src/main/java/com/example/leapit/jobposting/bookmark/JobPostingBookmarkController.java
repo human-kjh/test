@@ -15,9 +15,9 @@ public class JobPostingBookmarkController {
 
     // 개인 마이페이지 공고 스크랩 현황 관리
     @GetMapping("/s/personal/mypage/bookmark")
-    public ResponseEntity<?> personalBookmark() {
+    public ResponseEntity<?> getMyBookmark() {
         User sessionUser = (User) session.getAttribute("sessionUser");
-        JobPostingBookmarkResponse.ViewDTO respDTO = jobPostingBookmarkService.myBookmarkpage(sessionUser.getId());
+        JobPostingBookmarkResponse.ViewDTO respDTO = jobPostingBookmarkService.getMyBookmark(sessionUser.getId());
         return Resp.ok(respDTO);
     }
 }

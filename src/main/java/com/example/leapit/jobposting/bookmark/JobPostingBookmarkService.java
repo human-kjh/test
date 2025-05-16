@@ -15,17 +15,17 @@ public class JobPostingBookmarkService {
     private final ApplicationRepository applicationRepository;
 
     // 개인 마이페이지 공고 스크랩 현황 관리
-    public JobPostingBookmarkResponse.ViewDTO myBookmarkpage(Integer userId) {
+    public JobPostingBookmarkResponse.ViewDTO getMyBookmark(Integer userId) {
         if (userId == null) throw new ExceptionApi404("회원정보가 존재하지 않습니다.");
 
         // 지원 현황 통계
-        ApplicationResponse.StatusDTO statusDto = applicationRepository.findSummaryByUserId(userId);
+        ApplicationResponse.StatusDTO statusDTO = applicationRepository.findSummaryByUserId(userId);
 
         // 스크랩한 공고 목록 조회
         List<JobPostingBookmarkResponse.ItemDTO> bookmarkListDTO = jobPostingBookmarkRepository.findAllJobPostingBookmarkByuserId(userId);
 
         // respDTO에 담기
-        JobPostingBookmarkResponse.ViewDTO respDTO = new JobPostingBookmarkResponse.ViewDTO(bookmarkListDTO, statusDto);
+        JobPostingBookmarkResponse.ViewDTO respDTO = new JobPostingBookmarkResponse.ViewDTO(bookmarkListDTO, statusDTO);
 
         return respDTO;
     }
