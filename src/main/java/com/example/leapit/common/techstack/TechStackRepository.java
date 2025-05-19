@@ -4,15 +4,15 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Repository
 public class TechStackRepository {
     private final EntityManager em;
 
-    public Optional<TechStack> findByCode(String code) {
-        TechStack techStack = em.find(TechStack.class, code);
-        return Optional.ofNullable(techStack);
+    public List<String> findAll() {
+        return em.createQuery("SELECT ts.code FROM TechStack ts ORDER BY ts.code", String.class)
+                .getResultList();
     }
 }
